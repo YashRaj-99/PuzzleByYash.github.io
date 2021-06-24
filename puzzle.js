@@ -173,7 +173,7 @@
         {
             alert("Congratulations You have won the game!\nYour Score is: "+(score+1)+"\nTime Taken: "+time_taken);
             highscore= JSON.parse(localStorage.getItem("HighScore"));
-            if(score+1<highscore[1])
+            if(score+1<highscore[1]||highscore[1]==0)
             {
                 Name=prompt("HighScore!!!\nPls Enter Your Name: ");
                 highscore=[Name,score+1,time_taken];
