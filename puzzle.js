@@ -15,7 +15,7 @@
                 highscore=["",0,00+":"+00];
                 localStorage.setItem("HighScore",JSON.stringify(highscore));
             }
-            document.getElementById('HS').innerHTML=(JSON.parse(localStorage.getItem("HighScore")))[0]+":"+(JSON.parse(localStorage.getItem("HighScore")))[1];
+            document.getElementById('HS').innerHTML=(JSON.parse(localStorage.getItem("HighScore")))[0]+"->"+(JSON.parse(localStorage.getItem("HighScore")))[1];
             var timer_time= document.getElementById('time_running');
             var restart=document.getElementById("rest");
             restart.addEventListener('click',()=>{
@@ -173,7 +173,7 @@
         {
             alert("Congratulations You have won the game!\nYour Score is: "+(score+1)+"\nTime Taken: "+time_taken);
             highscore= JSON.parse(localStorage.getItem("HighScore"));
-            if(score>highscore[1]);
+            if(score+1<highscore[1])
             {
                 Name=prompt("HighScore!!!\nPls Enter Your Name: ");
                 highscore=[Name,score+1,time_taken];
@@ -195,6 +195,8 @@
                 arr[i+4].style.backgroundColor="grey";
             }
             clearInterval(stop_timer);
+  
+            // down.remove
             
             
         }
