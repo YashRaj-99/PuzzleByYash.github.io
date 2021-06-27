@@ -11,11 +11,15 @@
         var time_taken;
         var stop_timer;
         function my(){
-            if(localStorage.length==0){
+            if(localStorage.getItem("highScore")==null){
                 highscore=["",0,00+":"+00];
                 localStorage.setItem("HighScore",JSON.stringify(highscore));
+                document.getElementById('HS').innerHTML=(JSON.parse(localStorage.getItem("HighScore")))[1];
             }
-            document.getElementById('HS').innerHTML=(JSON.parse(localStorage.getItem("HighScore")))[0]+"->"+(JSON.parse(localStorage.getItem("HighScore")))[1];
+            else
+            {             
+            document.getElementById('HS').innerHTML=(JSON.parse(localStorage.getItem("HighScore")))[0]+":"+(JSON.parse(localStorage.getItem("HighScore")))[1];
+            }
             var timer_time= document.getElementById('time_running');
             var restart=document.getElementById("rest");
             restart.addEventListener('click',()=>{
@@ -171,19 +175,23 @@
         }
         function celebrate(arr,score)
         {
-            alert("Congratulations You have won the game!\nYour Score is: "+(score+1)+"\nTime Taken: "+time_taken);
+            Music.play();
             highscore= JSON.parse(localStorage.getItem("HighScore"));
-            if(score+1<highscore[1]||highscore[1]==0)
+            if((score+1)<highscore[1]||highscore[1]==0)
             {
                 Name=prompt("HighScore!!!\nPls Enter Your Name: ");
+                if(Name==null||Name=="")
+                Name="Anon";
                 highscore=[Name,score+1,time_taken];
                 localStorage.setItem("HighScore",JSON.stringify(highscore));
-                document.getElementById('HS').innerHTML=(JSON.parse(localStorage.getItem("HighScore")))[1];
+                document.getElementById('HS').innerHTML=(JSON.parse(localStorage.getItem("HighScore")))[0]+":"+(JSON.parse(localStorage.getItem("HighScore")))[1];
+            }
+            else{
+                document.getElementById('HS').innerHTML=(JSON.parse(localStorage.getItem("HighScore")))[0]+":"+(JSON.parse(localStorage.getItem("HighScore")))[1];
+                alert("Congratulations You have won the game!\nYour Score is: "+(score+1)+"\nTime Taken: "+time_taken);
             }
             
             
-            
-            Music.play();
             for(i=0;i<5;i++)
             {
                 arr[i].style.backgroundColor="grey";
@@ -195,8 +203,6 @@
                 arr[i+4].style.backgroundColor="grey";
             }
             clearInterval(stop_timer);
-  
-            // down.remove
             
             
         }
