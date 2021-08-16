@@ -1,5 +1,5 @@
 # Welcome to Color Tiles!
-  [Click](https://yashraj-99.github.io/) to Play 
+ ## [Click](https://yashraj-99.github.io/) to Play 
 ## About the Game
 ℹ You are provided with 2 grids filled with random colored tiles. You have to replicate the pattern present in the first grid at the centre of the second grid.<br/>
 🎮  You will be allowed to switch a colored tile with an empty tile using a controller! <br/>
