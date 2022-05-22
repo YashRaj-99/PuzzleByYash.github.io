@@ -10,6 +10,7 @@
         var stop=0;
         var time_taken;
         var stop_timer;
+        var workingArea;
         function my(){
             if(localStorage.getItem("highScore")==null){
                 highscore=["",0,00+":"+00];
@@ -79,7 +80,72 @@
                 },1000);
             },{once:true});
             
-            
+            // workingArea=getElementById('working-area');
+            document.addEventListener('keypress',logKey);
+            // 97 115 100
+            function logKey(e){
+                // console.log(e.keyCode);
+                if(e.keyCode==119){
+                    b.style.backgroundColor=arr[index-5].style.backgroundColor;
+                arr[index-5].style.backgroundColor="black";
+                index=index-5;
+                b=arr[index];
+                switch_music.play();
+                switch_music.playbackRate=10;
+                if(check(arr,element)){
+                    celebrate(arr,score);
+                }
+                score++;
+                scoring.innerHTML=score;
+                }
+                else if(e.keyCode==97){
+                    if((index-1)!=4 && (index-1)!=9 && (index-1)!=14 && (index-1)!=19 && (index-1)!=24)
+                {b.style.backgroundColor=arr[index-1].style.backgroundColor;
+                    arr[index-1].style.backgroundColor="black";
+                    index=index-1;
+                    b=arr[index];
+                    switch_music.play();
+                    switch_music.playbackRate=10;
+                    if(check(arr,element)){
+                        celebrate(arr,score);
+                    }
+                    score++;
+                    scoring.innerHTML=score;}
+                }
+                else if(e.keyCode==115)
+                {
+                    if((index+5)<25)
+                { b.style.backgroundColor=arr[index+5].style.backgroundColor;
+                    arr[index+5].style.backgroundColor="black";
+                    index=index+5;
+                    b=arr[index];
+                    switch_music.play();
+                    switch_music.playbackRate=10;
+                    if(check(arr,element)){
+                        celebrate(arr,score);
+                        clearInterval(timer_time,1000);
+                    }
+                    score++;
+                    scoring.innerHTML=score;
+                }
+                }
+                else if(e.keyCode==100)
+                {
+                    if((index+1)%5!=0)
+                    {b.style.backgroundColor=arr[index+1].style.backgroundColor;
+                        arr[index+1].style.backgroundColor="black";
+                        index=index+1;
+                        b=arr[index];
+                        switch_music.play();
+                        switch_music.playbackRate=10;
+                        if(check(arr,element)){
+                            celebrate(arr,score);
+                        }
+                        score++;
+                        scoring.innerHTML=score;}
+                    
+                }
+            }
             up.addEventListener('click',()=>{
                 b.style.backgroundColor=arr[index-5].style.backgroundColor;
                 arr[index-5].style.backgroundColor="black";
